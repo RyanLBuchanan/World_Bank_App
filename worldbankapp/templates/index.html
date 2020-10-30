@@ -3,14 +3,26 @@
 <html>
 <head>
   <title>Index Page</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body>
   <h1>The index.html page</h1>
-  {{ data_set }}
-  {% for tuple in data_set %}
-  <p>{{ tuple }}</p>
-  {% endfor %}
-  <h2>Resistance is futile.</h2>
+  <p>{{ids}}</p>
+  <p>{{figuresJSON}}</p>
+  <div id="{{ids[0]}}"></div>
+
+
+  <script type="text/javascript">
+    // Plot the figure with id
+    // Id must match the div id above in the html
+    var figures = {{figuresJSON | safe}};
+    var ids = {{ids | safe}};
+    for(var i in figures) {
+      Plotly.plot(ids[i],
+          figures[i].data,
+          figures[i].layout || {});
+    }
+  </script>
 </body>
 </html>
