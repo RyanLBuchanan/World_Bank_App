@@ -13,12 +13,21 @@ country = data[0][0]
 x_val = data[0][1]
 y_val = data[0][2]
 
-graph_one = [go.Scatter(
-    x = data[0][1],
-    y = data[0][2],
+# graph_one = [go.Scatter(
+#     x = data[0][1],
+#     y = data[0][2],
+#     mode = 'lines',
+#     name = country
+# )]
+
+graph_one = []
+for data_tuple in data:
+    graph_one.append(go.Scatter(
+    x = data_tuple[1],
+    y = data_tuple[2],
     mode = 'lines',
-    name = country
-)]
+    name = data_tuple[0]
+    ))
 
 layout_one = dict(title = 'Change in Hectares Arable Land <br> per Person 1990 to 2015',
             xaxis = dict(title = 'Year',
