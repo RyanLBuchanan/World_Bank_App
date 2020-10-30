@@ -94,8 +94,6 @@
     </div>
   </div>
 
-  <script src="scripts/plot1.js"></script>
-  <script src="scripts/plot2.js"></script>
   <!-- Optional JavaScript; choose one of the two! -->
 
   <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -128,5 +126,21 @@
     </div>
 
 </body>
+
+<footer>
+
+  <script type="text/javascript">
+    // Plot the figure with id
+    // Id must match the div id above in the html
+    var figures = {{figuresJSON | safe}};
+    var ids = {{ids | safe}};
+    for(var i in figures) {
+      Plotly.plot(ids[i],
+          figures[i].data,
+          figures[i].layout || {});
+    }
+  </script>
+  
+</footer>
 
 </html>
