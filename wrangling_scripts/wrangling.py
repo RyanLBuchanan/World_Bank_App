@@ -69,6 +69,24 @@ layout_one = dict(title = 'Change in Hectares Arable Land <br> per Person 1990 t
             yaxis = dict(title = 'Hectares')
                 )
 
+# Second chart plots arable land for 2015 as a bar chart
+graph_two = []
+df = cleandata('data/API_SP.RUR.TOTL.ZS_DS2_en_csv_v2_9948275.csv')
+df.columns = ['country', 'year', 'hectaresarablelandperperson']
+df.sort_values('hectaresarablelandperperson', ascending=False, inplace=True)
+df = df[df['year'] == 2015]
+
+graph_two.append(
+    go.Bar(
+    x = df.country.tolist(),
+    y = df.hectaresarablelandperperson.tolist()
+    )
+)
+
+layout_one = dict(title = 'Hectares Arable Land per Person in 2015',
+            xaxis = dict(title = 'Country'),
+            yaxis = dict(title = 'Hectares per Person')
+                )
 
 
 # Filter for 1990 and 2015, top 10 economies
