@@ -63,27 +63,33 @@ for country in countrylist:
         )
     )
 
+layout_one = dict(title = 'Change in Hectares Arable Land <br> per Person 1990 to 2015',
+            xaxis = dict(title = 'Year',
+                autotick=False, tick0=1990, dtick=25),
+            yaxis = dict(title = 'Hectares')
+                )
+
 
 
 # Filter for 1990 and 2015, top 10 economies
-df = df[['Country Name', '1990', '2015']]
-countrylist = ['United States', 'China', 'Japan', 'Germany', 'United Kingdom', 'India', 'France', 'Brazil', 'Italy', 'Canada']
-df = df[df['Country Name'].isin(countrylist)]
-
-# Melt year columns and convert year to date time
-df_melt = df.melt(id_vars='Country Name', value_vars = ['1990', '2015'])
-df_melt.columns = ['country', 'year', 'variable']
-df_melt['year'] = df_melt['year'].astype('datetime64[ns]').dt.year
-
-# Add column names
-df_melt.columns = ['country', 'year', 'percentrural']
-
-# Prepare data into x, y lists for plotting
-df_melt.sort_values('percentrural', ascending=False, inplace=True)
-
-data = []
-for country in countrylist:
-    x_val = df_melt[df_melt['country'] == country].year.tolist()
-    y_val = df_melt[df_melt['country'] == country].percentrural.tolist()
-    data.append((country, x_val, y_val))
-    print(country, x_val, y_val)
+# df = df[['Country Name', '1990', '2015']]
+# countrylist = ['United States', 'China', 'Japan', 'Germany', 'United Kingdom', 'India', 'France', 'Brazil', 'Italy', 'Canada']
+# df = df[df['Country Name'].isin(countrylist)]
+#
+# # Melt year columns and convert year to date time
+# df_melt = df.melt(id_vars='Country Name', value_vars = ['1990', '2015'])
+# df_melt.columns = ['country', 'year', 'variable']
+# df_melt['year'] = df_melt['year'].astype('datetime64[ns]').dt.year
+#
+# # Add column names
+# df_melt.columns = ['country', 'year', 'percentrural']
+#
+# # Prepare data into x, y lists for plotting
+# df_melt.sort_values('percentrural', ascending=False, inplace=True)
+#
+# data = []
+# for country in countrylist:
+#     x_val = df_melt[df_melt['country'] == country].year.tolist()
+#     y_val = df_melt[df_melt['country'] == country].percentrural.tolist()
+#     data.append((country, x_val, y_val))
+#     print(country, x_val, y_val)
