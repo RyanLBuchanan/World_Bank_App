@@ -45,6 +45,7 @@ def return_figures():
 # first chart plots arable land from 1990 to 2015 in top 10 economies
 # as a line chart
     graph_one = []
+    """ Datasets DO NOT match tutorial!!! """
     df = cleandata('data/API_SP.RUR.TOTL.ZS_DS2_en_csv_v2_9948275.csv')
     df.columns = ['country', 'year', 'hectaresarablelandperperson']
     df.sort_values('hectaresarablelandperperson', ascending=False, inplace=True)
@@ -70,6 +71,7 @@ def return_figures():
 
     # Second chart plots arable land for 2015 as a bar chart
     graph_two = []
+    """ Datasets DO NOT match tutorial!!! """
     df = cleandata('data/API_SP.RUR.TOTL.ZS_DS2_en_csv_v2_9948275.csv')
     df.columns = ['country', 'year', 'hectaresarablelandperperson']
     df.sort_values('hectaresarablelandperperson', ascending=False, inplace=True)
@@ -89,6 +91,7 @@ def return_figures():
 
     # Third chart plots percent of population that is rural from 1990 to 2015
     graph_three = []
+    """ Datasets DO NOT match tutorial!!! """
     df = cleandata('data/API_SP.RUR.TOTL.ZS_DS2_en_csv_v2_9948275.csv')
     df.columns = ['country', 'year', 'percentrural']
     df.sort_values('percentrural', ascending=False, inplace=True)
@@ -117,6 +120,7 @@ def return_figures():
     keepcolumns = [str(x) for x in range(1995, 2016)]
     keepcolumns.insert(0, 'Country Name')
 
+    """ Datasets DO NOT match tutorial!!! """
     df_one = cleandata('data/API_SP.RUR.TOTL.ZS_DS2_en_csv_v2_9948275.csv', keepcolumns, valuevariables)
     df_two = cleandata('data/API_SP.RUR.TOTL.ZS_DS2_en_csv_v2_9948275.csv', keepcolumns, valuevariables)
 
@@ -133,7 +137,20 @@ def return_figures():
         text = []
         for country, year in zip(country_label, year):
             text.append(str(country) + ' ' + str(year))
-            
+
+        graph_four.append(
+            go.Scatter(
+            x = x_val,
+            y = y_val,
+            mode = 'markers',
+            text = text,
+            name = country,
+            textposition = 'top'
+            )
+        )
+
+    
+
 # Filter for 1990 and 2015, top 10 economies
 # df = df[['Country Name', '1990', '2015']]
 # countrylist = ['United States', 'China', 'Japan', 'Germany', 'United Kingdom', 'India', 'France', 'Brazil', 'Italy', 'Canada']
