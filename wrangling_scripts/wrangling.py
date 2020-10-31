@@ -42,8 +42,26 @@ def return_figures():
 
     """
 
+# first chart plots arable land from 1990 to 2015 in top 10 economies
+# as a line chart
 
+graph_one = []
+df = cleandata('data/API_SP.RUR.TOTL.ZS_DS2_en_csv_v2_9948275.csv')
+df.columns = ['country', 'year', 'hectaresarablelandperperson']
+df.sort_values('hectaresarablelandperperson', ascending=False, inplace=True)
+countrylist = df.country.unique().tolist()
 
+for country in countrylist:
+    x_val = df[df['country'] == country].year.tolist()
+    y_val = df[df['country'] == country].hectaresarablelandperperson.tolist()
+    graph_one.append(
+        go.Scatter(
+        x = x_val,
+        y = y_val,
+        mode = 'lines',
+        name = country
+        )
+    )
 
 
 
