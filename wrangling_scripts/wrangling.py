@@ -83,9 +83,32 @@ graph_two.append(
     )
 )
 
-layout_one = dict(title = 'Hectares Arable Land per Person in 2015',
+layout_two = dict(title = 'Hectares Arable Land per Person in 2015',
             xaxis = dict(title = 'Country'),
             yaxis = dict(title = 'Hectares per Person')
+                )
+
+# Third chart plots percent of population that is rural from 1990 to 2015
+graph_three = []
+df = cleandata('data/API_SP.RUR.TOTL.ZS_DS2_en_csv_v2_9948275.csv')
+df.columns = ['country', 'year', 'percentrural']
+df.sort_values('percentrural', ascending=False, inplace=True)
+for country in countrylist:
+    x_val = df[df['country'] == country].year.tolist()
+    y_val = df[df['country'] == country].percentrural.tolist()
+    graph_three.append(
+        go.Scatter(
+        x = x_val,
+        y = y_val,
+        mode = 'lines',
+        name = country
+        )
+    )
+
+layout_three = dict(title = 'Change in Rural Population <br> (Percent of Total Population)',
+            xaxis = dict(title = 'Year',
+                autotick=False, tick0=1990, dtick=25),
+            yaxis = dict(title = 'Percent')
                 )
 
 
