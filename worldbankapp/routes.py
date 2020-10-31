@@ -69,7 +69,9 @@ def virtual_reality():
 
 @app.route('/data-dashboard')
 def data_dashboard():
-    return render_template('data_dashboard.html', ids=ids, figuresJSON=figuresJSON)
+    return render_template('data_dashboard.html',
+                            ids=ids,
+                            figuresJSON=figuresJSON)
 
 @app.route('/about')
 def about():
