@@ -69,6 +69,15 @@ def virtual_reality():
 
 @app.route('/data-dashboard')
 def data_dashboard():
+
+    figures = return_figures()
+
+    # Plot ids for the html id tag
+    ids = ['figure-{}'.format(i) for i, _ in enumerate(figures)]
+
+    # Convert the plotly figures to JSON for javascript in html template
+    figuresJSON = json.dumps(figures, cls=plotly.utils.PlotlyJSONEncoder)
+    
     return render_template('data_dashboard.html',
                             ids=ids,
                             figuresJSON=figuresJSON)
