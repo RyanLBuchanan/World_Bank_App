@@ -1,7 +1,5 @@
 .DS_store
 .ipynb_checkpoints
 *.jpg
-dataset/
-*Untitled.ipynb
 __pycache__/
 **/data
