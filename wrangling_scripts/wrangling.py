@@ -149,7 +149,19 @@ def return_figures():
             )
         )
 
-    
+    layout_four = dict(title = 'Rural Population versus <br> Forested Area (Square Km) 1990-2015',
+                xaxis = dict(title = 'Rural Population'),
+                yaxis = dict(title = 'Forest Area (Square Km)')
+                )
+
+    # Append all charts to the figure lists
+    figures = []
+    figures.append(dict(data=graph_one, layout=layout_one))
+    figures.append(dict(data=graph_two, layout=layout_two))
+    figures.append(dict(data=graph_three, layout=layout_three))
+    figures.append(dict(data=graph_four, layout=layout_four))
+
+    return figures
 
 # Filter for 1990 and 2015, top 10 economies
 # df = df[['Country Name', '1990', '2015']]
