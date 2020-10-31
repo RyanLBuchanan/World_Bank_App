@@ -2,8 +2,7 @@ import pandas as pd
 import plotly.graph_objs as go
 
 def cleandata(dataset, keepcolumns = ['Country Name', '1990', '2015'], value_variables = ['1990', '2015']):
-    """
-    Clean World Bank data for a visualization Dashboard
+    """Clean World Bank data for a visualization Dashboard
 
     Keep data range of dates in keep_columns variable and data for the top 10 economies
     Reorient the columns into a year, country and value
@@ -14,6 +13,7 @@ def cleandata(dataset, keepcolumns = ['Country Name', '1990', '2015'], value_var
 
     Returns:
         None
+
     """
     df = pd.read_csv('data/API_SP.RUR.TOTL.ZS_DS2_en_csv_v2_9948275.csv', skiprows=4)
 
@@ -31,6 +31,16 @@ def cleandata(dataset, keepcolumns = ['Country Name', '1990', '2015'], value_var
     # Output clean csv file
     return df_melt
 
+def return_figures():
+    """Create four plotly Visualizations
+
+    Args:
+        None
+
+    Returns:
+        list (dict): list containing the four plotly visualizations
+
+    """
 
 
 
